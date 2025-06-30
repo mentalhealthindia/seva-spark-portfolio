@@ -16,11 +16,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Home', href: '#hero' },
-    { name: 'Mission', href: '#mission' },
-    { name: 'Programs', href: '#programs' },
-    { name: 'Impact', href: '#impact' },
-    { name: 'Donate', href: '#donate' },
-    { name: 'Team', href: '#team' },
+    { name: 'About Us', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -34,7 +30,7 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-black/20 backdrop-blur-sm'
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
@@ -46,10 +42,16 @@ const Navigation = () => {
               className="w-12 h-12 rounded-full"
             />
             <div>
-              <h1 className="font-montserrat font-bold text-lg text-primary">
+              <h1 className={`font-montserrat font-bold text-lg transition-colors duration-300 ${
+                scrolled ? 'text-primary' : 'text-white drop-shadow-lg'
+              }`}>
                 Gopal Educational & Social Welfare Society
               </h1>
-              <p className="text-sm text-gray-600">Transforming Lives Through Education</p>
+              <p className={`text-sm transition-colors duration-300 ${
+                scrolled ? 'text-gray-600' : 'text-white/90 drop-shadow-lg'
+              }`}>
+                Transforming Lives Through Education
+              </p>
             </div>
           </div>
 
@@ -59,7 +61,11 @@ const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="font-open-sans font-medium text-gray-700 hover:text-primary transition-colors duration-200"
+                className={`font-open-sans font-medium transition-colors duration-200 ${
+                  scrolled 
+                    ? 'text-gray-700 hover:text-primary' 
+                    : 'text-white hover:text-secondary drop-shadow-lg'
+                }`}
               >
                 {item.name}
               </button>
@@ -68,7 +74,9 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className={`md:hidden p-2 transition-colors duration-300 ${
+              scrolled ? 'text-gray-700' : 'text-white'
+            }`}
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}

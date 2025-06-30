@@ -87,10 +87,22 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-open-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-montserrat;
+  }
+
+  /* Improved mobile text readability */
+  @media (max-width: 768px) {
+    h1 {
+      line-height: 1.1;
+    }
+    p {
+      line-height: 1.6;
+    }
   }
 }
 
@@ -100,7 +112,7 @@ All colors MUST be HSL.
   }
   
   .hero-overlay {
-    background: linear-gradient(135deg, rgba(46, 134, 171, 0.8) 0%, rgba(249, 168, 38, 0.6) 50%, rgba(39, 174, 96, 0.8) 100%);
+    background: linear-gradient(135deg, rgba(46, 134, 171, 0.7) 0%, rgba(249, 168, 38, 0.5) 50%, rgba(39, 174, 96, 0.7) 100%);
   }
   
   .card-hover {
@@ -109,5 +121,13 @@ All colors MUST be HSL.
   
   .smooth-scroll {
     scroll-behavior: smooth;
+  }
+
+  /* Better mobile touch targets */
+  @media (max-width: 768px) {
+    button {
+      min-height: 44px;
+      min-width: 44px;
+    }
   }
 }
