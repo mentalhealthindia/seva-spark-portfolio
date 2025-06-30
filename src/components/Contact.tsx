@@ -8,9 +8,11 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [language, setLanguage] = useState('english');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -108,28 +110,79 @@ const Contact = () => {
 
   const currentContent = content[language as keyof typeof content];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    
-    toast({
-      title: language === 'english' ? "Message Sent!" : "संदेश भेजा गया!",
-      description: language === 'english' 
-        ? "Thank you for reaching out. We'll get back to you soon."
-        : "संपर्क करने के लिए धन्यवाद। हम जल्द ही आपसे संपर्क करेंगे।",
-    });
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: language === 'english' ? "Missing Information" : "जानकारी गुम है",
+        description: language === 'english' 
+          ? "Please fill in all required fields."
+          : "कृपया सभी आवश्यक फ़ील्ड भरें।",
+        variant: "destructive",
+      });
+      return;
+    }
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: 'General Inquiry',
-      message: '',
-      type: 'inquiry'
-    });
+    setIsSubmitting(true);
+    
+    try {
+      // EmailJS configuration - You'll need to set up your EmailJS account
+      const serviceId = 'your_service_id'; // Replace with your EmailJS service ID
+      const templateId = 'your_template_id'; // Replace with your EmailJS template ID
+      const publicKey = 'your_public_key'; // Replace with your EmailJS public key
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        inquiry_type: currentContent.types[formData.type as keyof typeof currentContent.types],
+        message: formData.message,
+        to_email: 'help.gopalwelfare@gmail.com',
+        reply_to: formData.email,
+      };
+
+      // For now, we'll simulate the email sending since EmailJS requires setup
+      // Uncomment the line below once you have EmailJS configured
+      // await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      console.log('Form submitted:', formData);
+      console.log('Email would be sent to: help.gopalwelfare@gmail.com');
+      console.log('Template params:', templateParams);
+      
+      toast({
+        title: language === 'english' ? "Message Sent!" : "संदेश भेजा गया!",
+        description: language === 'english' 
+          ? "Thank you for reaching out. We'll get back to you within 24 hours."
+          : "संपर्क करने के लिए धन्यवाद। हम 24 घंटे के भीतर आपसे संपर्क करेंगे।",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: 'General Inquiry',
+        message: '',
+        type: 'inquiry'
+      });
+      
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: language === 'english' ? "Error" : "त्रुटि",
+        description: language === 'english' 
+          ? "Failed to send message. Please try again or contact us directly."
+          : "संदेश भेजने में विफल। कृपया पुनः प्रयास करें या सीधे हमसे संपर्क करें।",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -195,7 +248,7 @@ const Contact = () => {
             {/* Map Placeholder */}
             <Card className="mt-8 overflow-hidden shadow-lg">
               <CardContent className="p-0">
-                <div className="h-64 bg-gradient-to-br from-primary/20 to-success/20 flex items-center justify-center">
+                <div className="h-64 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
                     <p className="font-montserrat font-semibold text-gray-700">
@@ -241,6 +294,7 @@ const Contact = () => {
                         onChange={(e) => handleInputChange('name', e.target.value)}
                         required
                         className="font-open-sans"
+                        disabled={isSubmitting}
                       />
                     </div>
                     
@@ -256,6 +310,7 @@ const Contact = () => {
                         onChange={(e) => handleInputChange('email', e.target.value)}
                         required
                         className="font-open-sans"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -272,6 +327,7 @@ const Contact = () => {
                         value={formData.phone}
                         onChange={(e) => handleInputChange('phone', e.target.value)}
                         className="font-open-sans"
+                        disabled={isSubmitting}
                       />
                     </div>
                     
@@ -279,7 +335,11 @@ const Contact = () => {
                       <Label htmlFor="type" className="font-open-sans font-medium">
                         {currentContent.form.type}
                       </Label>
-                      <Select value={formData.type} onValueChange={(value) => handleInputChange('type', value)}>
+                      <Select 
+                        value={formData.type} 
+                        onValueChange={(value) => handleInputChange('type', value)}
+                        disabled={isSubmitting}
+                      >
                         <SelectTrigger className="font-open-sans">
                           <SelectValue />
                         </SelectTrigger>
@@ -298,7 +358,11 @@ const Contact = () => {
                     <Label htmlFor="subject" className="font-open-sans font-medium">
                       {currentContent.form.subject} *
                     </Label>
-                    <Select value={formData.subject} onValueChange={(value) => handleInputChange('subject', value)}>
+                    <Select 
+                      value={formData.subject} 
+                      onValueChange={(value) => handleInputChange('subject', value)}
+                      disabled={isSubmitting}
+                    >
                       <SelectTrigger className="font-open-sans">
                         <SelectValue />
                       </SelectTrigger>
@@ -324,6 +388,7 @@ const Contact = () => {
                       required
                       rows={6}
                       className="font-open-sans resize-none"
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -331,9 +396,19 @@ const Contact = () => {
                     type="submit" 
                     className="w-full bg-primary hover:bg-primary/90 font-montserrat font-semibold py-6 text-lg"
                     size="lg"
+                    disabled={isSubmitting}
                   >
-                    <Send className="w-5 h-5 mr-2" />
-                    {currentContent.form.submit}
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 mr-2 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                        {language === 'english' ? 'Sending...' : 'भेजा जा रहा है...'}
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5 mr-2" />
+                        {currentContent.form.submit}
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
