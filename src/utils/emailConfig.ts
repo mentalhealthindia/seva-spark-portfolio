@@ -17,7 +17,7 @@
 
 export const emailConfig = {
   serviceId: 'service_qka0qkq', // Replace with your EmailJS service ID
-  templateId: 'template_grig1jw', // Replace with your EmailJS template ID
+  templateId: 'template_vel3g58', // Replace with your EmailJS template ID
   publicKey: 'X-H6CJ6Z3vVTY1E7S', // Replace with your EmailJS public key
   toEmail: 'abhilashvarshney3@gmail.com'
 };
