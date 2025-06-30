@@ -16,10 +16,10 @@
 // 5. Replace the placeholder values in Contact.tsx with your actual EmailJS credentials
 
 export const emailConfig = {
-  serviceId: 'your_service_id', // Replace with your EmailJS service ID
-  templateId: 'your_template_id', // Replace with your EmailJS template ID
-  publicKey: 'your_public_key', // Replace with your EmailJS public key
-  toEmail: 'help.gopalwelfare@gmail.com'
+  serviceId: 'service_qka0qkq', // Replace with your EmailJS service ID
+  templateId: 'template_grig1jw', // Replace with your EmailJS template ID
+  publicKey: 'X-H6CJ6Z3vVTY1E7S', // Replace with your EmailJS public key
+  toEmail: 'abhilashvarshney3@gmail.com'
 };
 
 // Example EmailJS template content:
