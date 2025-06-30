@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, Globe } from 'lucide-react';
+import { MapPin, Mail, Send, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -40,18 +40,6 @@ const Contact = () => {
       title: 'Email',
       content: ['help.gopalwelfare@gmail.com'],
       color: 'text-secondary'
-    },
-    {
-      icon: Phone,
-      title: 'Phone',
-      content: ['+91-XXXXXXXXXX', 'Available Mon-Sat'],
-      color: 'text-success'
-    },
-    {
-      icon: Clock,
-      title: 'Office Hours',
-      content: ['Monday - Saturday', '9:00 AM - 6:00 PM', 'Sunday: Closed'],
-      color: 'text-primary'
     }
   ];
 

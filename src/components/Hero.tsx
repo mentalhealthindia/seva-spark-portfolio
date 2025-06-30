@@ -1,5 +1,4 @@
 
-import { ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
@@ -45,15 +44,6 @@ const Hero = () => {
           >
             Contact Us
           </Button>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <button 
-            onClick={() => scrollToSection('#about')}
-            className="text-white hover:text-secondary transition-colors duration-300 drop-shadow-lg"
-          >
-            <ArrowDown size={32} />
-          </button>
         </div>
       </div>
     </section>
