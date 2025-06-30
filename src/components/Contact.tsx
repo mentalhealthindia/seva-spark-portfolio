@@ -128,9 +128,9 @@ const Contact = () => {
     
     try {
       // EmailJS configuration - You'll need to set up your EmailJS account
-      const serviceId = 'your_service_id'; // Replace with your EmailJS service ID
-      const templateId = 'your_template_id'; // Replace with your EmailJS template ID
-      const publicKey = 'your_public_key'; // Replace with your EmailJS public key
+      const serviceId = 'service_qka0qkq'; // Replace with your EmailJS service ID
+      const templateId = 'template_vel3g58'; // Replace with your EmailJS template ID
+      const publicKey = 'X-H6CJ6Z3vVTY1E7S'; // Replace with your EmailJS public key
 
       const templateParams = {
         from_name: formData.name,
@@ -139,13 +139,13 @@ const Contact = () => {
         subject: formData.subject,
         inquiry_type: currentContent.types[formData.type as keyof typeof currentContent.types],
         message: formData.message,
-        to_email: 'help.gopalwelfare@gmail.com',
+        to_email: 'abhilashvarshney3@gmail.com',
         reply_to: formData.email,
       };
 
       // For now, we'll simulate the email sending since EmailJS requires setup
       // Uncomment the line below once you have EmailJS configured
-      // await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
       
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 2000));
