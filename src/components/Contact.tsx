@@ -252,8 +252,8 @@ const Contact = () => {
                     </p>
                     <p className="font-open-sans text-sm text-gray-600 mt-2">
                       {language === 'english' 
-                        ? 'Ahmamau, Arjunganj, Lucknow' 
-                        : 'अहमामऊ, अर्जुनगंज, लखनऊ'}
+                        ? 'Lucknow' 
+                        : ' लखनऊ'}
                     </p>
                   </div>
                 </div>
