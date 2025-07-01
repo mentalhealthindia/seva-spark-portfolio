@@ -19,7 +19,7 @@ export const emailConfig = {
   serviceId: 'service_qka0qkq', // Replace with your EmailJS service ID
   templateId: 'template_vel3g58', // Replace with your EmailJS template ID
   publicKey: 'X-H6CJ6Z3vVTY1E7S', // Replace with your EmailJS public key
-  toEmail: 'abhilashvarshney3@gmail.com'
+  toEmail: 'help.gopalwelfare@gmail.com'
 };
 
 // Example EmailJS template content:
