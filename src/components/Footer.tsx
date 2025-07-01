@@ -28,8 +28,8 @@ const Footer = () => {
             </div>
             
             <p className="font-open-sans text-gray-300 leading-relaxed max-w-2xl">
-              Registered under the Societies Registration Act of 1860 
-              (Registration No. LUC/08010/2021-22), we are committed to 
+              Registered under the Societies Registration Act of 1860, 
+              we are committed to 
               transforming lives through education and social empowerment.
             </p>
           </div>
@@ -41,8 +41,7 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-secondary flex-shrink-0" />
                 <div className="font-open-sans text-sm text-gray-300 text-center md:text-left">
-                  <div>Building No. 08, Ahmamau</div>
-                  <div>Arjunganj, Lucknow, UP - 226002</div>
+                  <div>Lucknow, UP - 226002</div>
                 </div>
               </div>
               
@@ -65,7 +64,7 @@ const Footer = () => {
             <div className="font-open-sans text-gray-400 text-sm">
               <p>© {currentYear} Gopal Educational and Social Welfare Society. All rights reserved.</p>
               <p className="mt-2">
-                Registration No. LUC/08010/2021-22 | Established: 24th February 2025
+                Registration No. LUC/08010/2021-22 | Established: 6th October 2021
               </p>
             </div>
           </div>
