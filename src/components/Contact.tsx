@@ -29,11 +29,7 @@ const Contact = () => {
       icon: MapPin,
       title: 'Address',
       content: [
-        'Building No./Flat No.: 08',
-        'Name Of Premises/Building: Ahmamau',
-        'Road/Street: Arjunganj',
-        'City: Lucknow, Uttar Pradesh',
-        'PIN Code: 226002'
+        'Lucknow, Uttar Pradesh'
       ],
       color: 'text-primary'
     },
