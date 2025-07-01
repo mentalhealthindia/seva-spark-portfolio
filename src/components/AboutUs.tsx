@@ -70,7 +70,7 @@ const AboutUs = () => {
                 
                 <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-lg p-6 mb-6 border-l-4 border-primary">
                   <p className="font-open-sans text-base text-gray-700 leading-relaxed">
-                    We are officially registered under the Societies Registration Act of 1860, with Registration No. <span className="font-semibold text-primary bg-primary/10 px-2 py-1 rounded">LUC/08010/2021-22</span>, dated 24th February 2025. Our society is headquartered at Ahmamau, Arjunganj, Lucknow, Uttar Pradesh – 226002.
+                    We are officially registered under the Societies Registration Act of 1860.
                   </p>
                 </div>
 
