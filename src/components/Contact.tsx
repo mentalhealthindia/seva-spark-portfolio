@@ -139,7 +139,7 @@ const Contact = () => {
         subject: formData.subject,
         inquiry_type: currentContent.types[formData.type as keyof typeof currentContent.types],
         message: formData.message,
-        to_email: 'abhilashvarshney3@gmail.com',
+        to_email: 'help.gopalwelfare@gmail.com',
         reply_to: formData.email,
       };
 
