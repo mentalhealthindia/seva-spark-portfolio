@@ -10,7 +10,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-24">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -27,12 +27,12 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-        <h1 className="font-montserrat font-bold text-3xl md:text-5xl lg:text-6xl xl:text-7xl mb-6 animate-fade-in drop-shadow-2xl leading-tight">
+        <h1 className="font-montserrat font-bold text-2xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 animate-fade-in drop-shadow-2xl leading-tight">
           We Focus On Education, Health, And Social Welfare Through Dedicated Service And Reliable Supply Work That Makes A 
           <span className="block text-white mt-2 drop-shadow-2xl">Real Difference</span>
         </h1>
         
-        <p className="font-open-sans text-base md:text-lg lg:text-xl xl:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-in-left drop-shadow-lg">
+        <p className="font-open-sans text-sm md:text-base lg:text-lg xl:text-xl mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-in-left drop-shadow-lg">
           Join Gopal Educational and Social Welfare Society in transforming communities.
         </p>
 
